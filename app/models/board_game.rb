@@ -6,6 +6,6 @@ class BoardGame < ApplicationRecord
     validates :category, presence: true, inclusion: {in: CATEGORY}
 
     #relations
-    belongs_to :game
-    has_many :users, through: :game
+    has_many :games
+    has_many :users, through: :games
 end

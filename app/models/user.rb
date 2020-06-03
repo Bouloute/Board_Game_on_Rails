@@ -4,8 +4,9 @@ class User < ApplicationRecord
 
     #validations
     validates :name, presence: true
+    validates :email, presence: true, uniqueness: true #inclusion @  
 
     #relations
-    belongs_to :game
-    has_many :board_games, through: :game
+    has_many :games
+    has_many :board_games, through: :games
 end
