@@ -1,0 +1,17 @@
+<div class="form">
+    <%= form_for @user do |f| %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %><br>
+        
+        <%= f.label :email %><br>
+        <%= f.text_field :email %><br>
+
+        <%= f.label :password %><br>
+        <%= f.text_field :password %><br>
+        
+        <%= f.submit "Create User" %>
+
+      <p class="message">Already registered? <a href="/login">Sign In</a></p>
+    <% end %>
+    
+</div>
