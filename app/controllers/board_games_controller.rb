@@ -26,7 +26,7 @@ class BoardGamesController < ApplicationController
         params.require(:board_game).permit(
         :name,
         :time_duration,
-        :dificulty,
+        :difficulty,
         :rules
         )
     end
