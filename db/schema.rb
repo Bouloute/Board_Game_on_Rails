@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_154546) do
   create_table "board_games", force: :cascade do |t|
     t.string "name"
     t.integer "time_duration"
-    t.integer "diificulty"
+    t.integer "dificulty"
     t.string "rules"
     t.string "category"
   end

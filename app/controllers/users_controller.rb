@@ -12,8 +12,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.valid?
             session[:user_id] = @user.id
-        # redirect_to user_path(user)
-            redirect_to users_path
+            redirect_to board_games_path
         else 
             render :new
         end

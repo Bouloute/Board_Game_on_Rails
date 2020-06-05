@@ -1,0 +1,5 @@
+<ul>
+<% @board_games.each do |board_game| %>
+    <li><a href="<%= board_game_path(board_game) %>"><%= board_game.name %> </a>
+<% end %>
+</ul>
