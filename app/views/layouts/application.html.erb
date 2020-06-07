@@ -6,11 +6,32 @@
     <%= csp_meta_tag %>
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbar.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <section class="navigation">
+      <div class="nav-container">
+        <div class="brand">
+          <%= display_user_or_home_page %>
+        </div>
+        <nav>
+          <ul class="nav-list">
+            <li>
+              <a href="<%= board_games_path %>">Board Games</a>
+            </li>
+
+            <li>
+              <%= display_log_in_out %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+
+
     <%= yield %>
   </body>
 </html>
