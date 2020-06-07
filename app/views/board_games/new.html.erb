@@ -1,6 +1,6 @@
 <div class="form">
+  <h1>Create a Board Game</h1>
     <%= form_for @board_game do |f| %>
-
 
         <% if @board_game.errors.any? %>
           <div id="error_explanation">
@@ -20,7 +20,7 @@
         </div>
 
         <div class="field<%= 'field_with_errors' if @board_game.errors[:time_duration].any? %>">
-         Esitimated duration of the game in minuites<br>
+          Esitimated duration of the game in minuites<br>
           <%= f.number_field :time_duration %><br>
         </div>
 

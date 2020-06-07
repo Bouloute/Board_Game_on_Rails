@@ -1,0 +1,7 @@
+<h1><%= @user.name %></h1>
+<p>Here are the games <%= @user.name %> has played</p>
+<ul>
+    <% @user.board_games.each do |g| %>
+        <li><a href="<%= board_game_path(g) %>"><%= g.name %></a>
+    <% end %>
+</ul>

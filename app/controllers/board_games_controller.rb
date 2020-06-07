@@ -5,6 +5,7 @@ class BoardGamesController < ApplicationController
 
     def show 
         @board_game = BoardGame.find_by(id: params[:id])
+        @game = Game.new(user: current_user, board_game: @board_game)
     end
 
     def new 

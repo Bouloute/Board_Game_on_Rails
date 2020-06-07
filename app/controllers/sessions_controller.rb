@@ -23,6 +23,8 @@ class SessionsController < ApplicationController
         redirect_to "/login"
     end
 
+    private
+
     def login_validation(user)
         
         if !user
