@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
+
+  get '/', to: 'board_games#index'
 end
