@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
     def current_user 
         User.find_by(id: session[:user_id])
     end
+
+    def require_login
+        redirect_to controller: 'sessions', action: 'new' unless session.include? :name
+    end
 end

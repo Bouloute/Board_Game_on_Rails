@@ -1,4 +1,5 @@
 class BoardGamesController < ApplicationController
+    before_action :require_login, only: [:new, :create]
     def index 
         @board_games = BoardGame.all 
     end
