@@ -5,6 +5,7 @@ class User < ApplicationRecord
     #validations
     validates :name, presence: true, uniqueness: true
     validates :email, presence: true, uniqueness: true #inclusion @  
+    validates :password, presence: true
 
     #relations
     has_many :games

@@ -5,17 +5,27 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(name: params[:user][:name])
-        @user = login_validation(@user)
-        
-        if @user.id
-            return render :new unless @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id
-            redirect_to board_games_path
+        #if used omniauth
+        if auth
+            @user = User.find_or_create_by(email: auth['info']['email']) do |u|
+                u.name = auth['info']['name']
+                u.password = SecureRandom.hex
+            end
         else
+
+            @user = User.find_by(name: params[:user][:name])
+            @user = login_validation(@user)
+            
+            if @user.id
+                return render :new unless @user.authenticate(params[:user][:password])
+            end
+        end
+        
+        if @user.valid? 
             render :new 
         end
-    
+        session[:user_id] = @user.id
+        redirect_to board_games_path
     end
     
     def destroy
@@ -37,4 +47,9 @@ class SessionsController < ApplicationController
         end
         user
     end
+
+    def auth
+        request.env['omniauth.auth']
+    end
+
 end
