@@ -26,8 +26,8 @@
         
         <%= f.submit "Log In" %>
 
-        <p class="message">Never registered? <a href="/signup">Sign Up</a></p>
-        <p class="message">Log in with <a href="/auth/github">Github</a></p>
+        <p class="message">Never registered? <%= link_to "Sign Up", "/signup" %></p>
+        <p class="message">Log in with <%= link_to "Github", "/auth/github" %></p>
         <% end %>
     
 </div>

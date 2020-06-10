@@ -2,6 +2,6 @@
 <p>Here are the games <%= @user.name %> has played</p>
 <ul>
     <% @user.board_games.each do |g| %>
-        <li><a href="<%= board_game_path(g) %>"><%= g.name %></a>
+        <li><%= link_to g.name, board_game_path(g) %>
     <% end %>
 </ul>

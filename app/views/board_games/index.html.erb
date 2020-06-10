@@ -1,5 +1,5 @@
 
-<%= form_with url: board_games_path, method: 'get' do |f| %>
+<%= form_for :board_game, url: board_games_path, method: 'get' do |f| %>
     <%= f.label(:query, "Search name of game:") %>
     <%= f.text_field(:query) %>
     <%= submit_tag("Search") %>
@@ -10,8 +10,8 @@
 
 <ul>
     <% @board_games.each do |board_game| %>
-        <li><a href="<%= board_game_path(board_game) %>"><%= board_game.name %> </a>
+        <li><%= link_to board_game.name, board_game_path(board_game) %></li>
     <% end %>
 </ul>
 
-<p>Couldn't find the game you're looking for? <a href="<%=new_board_game_path%>">Create it!</a></p>
+<p>Couldn't find the game you're looking for?<%= link_to "Create it!"", new_board_game_path %></p>

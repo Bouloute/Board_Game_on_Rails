@@ -7,17 +7,18 @@ class BoardGamesController < ApplicationController
         #nested
         if params[:user_id]
             @board_games = User.find_by(id: params[:user_id]).board_games
-            #render :index
+           # render :index
         end
 
-        if params[:query]
+        if params[:board_game] && params[:board_game][:query]
             #CASE SENSITIVE
-            @board_games = BoardGame.where("name == ?", params[:query])
+            @board_games = BoardGame.where("name == ?", params[:board_game][:query])
             
             if @board_games == []
                 @board_games = BoardGame.all 
                 @board_games.errors.add(:name, "Couldn't find any games with that name")
             end 
+            render :index
         else
             @board_games = BoardGame.all 
         end

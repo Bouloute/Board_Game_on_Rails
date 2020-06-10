@@ -2,37 +2,36 @@
 <div class="form">
     <%= form_for @user do |f| %>
 
-
-        <% if @user.errors.any? %>
-          <div id="error_explanation">
-            <h2>There were some errors:</h2>
-            <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-
-        <div class="field<%= 'field_with_errors' if @user.errors[:name].any? %>">
-          <%= f.label :name %><br>
-          <%= f.text_field :name %><br>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2>There were some errors:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         </div>
+      <% end %>
 
-        <div class="field<%= 'field_with_errors' if @user.errors[:email].any? %>">
-          <%= f.label :email %><br>
-          <%= f.email_field :email %><br>
-        </div>
 
-        <div class="field<%= 'field_with_errors' if @user.errors[:password].any? %>">
-          <%= f.label :password %><br>
-          <%= f.password_field :password %><br>
-        </div>
-        
-        <%= f.submit "Create User" %>
+      <div class="field<%= 'field_with_errors' if @user.errors[:name].any? %>">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %><br>
+      </div>
 
-      <p class="message">Already registered? <a href="/login">Sign In</a></p>
+      <div class="field<%= 'field_with_errors' if @user.errors[:email].any? %>">
+        <%= f.label :email %><br>
+        <%= f.email_field :email %><br>
+      </div>
+
+      <div class="field<%= 'field_with_errors' if @user.errors[:password].any? %>">
+        <%= f.label :password %><br>
+        <%= f.password_field :password %><br>
+      </div>
+      
+      <%= f.submit "Create User" %>
+
+      <p class="message">Already registered? <%= link_to "Sign In", "/login" %></p>
     <% end %>
     
 </div>

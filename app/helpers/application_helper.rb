@@ -7,7 +7,6 @@ module ApplicationHelper
         else 
             link_to "Home", "/"
         end
-        #<a href="/">USER NAME</a>
     end
 
     def display_log_in_out
