@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :board_games, only: [:index, :show, :new, :create]
   resources :games, only: [:create]
 
+  resources :users do
+    resources :board_games
+  end
+
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

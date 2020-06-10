@@ -3,9 +3,10 @@
     <%= f.label(:query, "Search name of game:") %>
     <%= f.text_field(:query) %>
     <%= submit_tag("Search") %>
-  <% end %>
+<% end %>
 
 
+<%= display_user_name_if_not_current %><br>
 
 <ul>
     <% @board_games.each do |board_game| %>

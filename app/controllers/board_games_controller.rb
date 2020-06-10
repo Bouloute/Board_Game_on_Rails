@@ -1,7 +1,15 @@
 class BoardGamesController < ApplicationController
     before_action :require_login, only: [:new, :create]
-
+    
     def index 
+        
+        #binding.pry
+        #nested
+        if params[:user_id]
+            @board_games = User.find_by(id: params[:user_id]).board_games
+            #render :index
+        end
+
         if params[:query]
             #CASE SENSITIVE
             @board_games = BoardGame.where("name == ?", params[:query])
@@ -13,7 +21,6 @@ class BoardGamesController < ApplicationController
         else
             @board_games = BoardGame.all 
         end
-        
     end
 
     def show 
