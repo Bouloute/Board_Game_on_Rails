@@ -1,5 +1,5 @@
 
-<%= form_for :board_game, url: display_form_for_search_bar, method: 'get' do |f| %>
+<%= form_for :board_game, url: url_for_form_for_search_bar, method: 'get' do |f| %>
     <%= f.label(:query, "Search name of game:") %>
     <%= f.text_field(:query) %>
     <%= submit_tag("Search") %>
