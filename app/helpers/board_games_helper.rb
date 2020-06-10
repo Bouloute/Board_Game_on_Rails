@@ -10,7 +10,7 @@ module BoardGamesHelper
         end
     end
 
-    def display_form_for_search_bar
+    def url_for_form_for_search_bar
         if params[:user_id]
             user_board_games_path(params[:user_id])
         else 
