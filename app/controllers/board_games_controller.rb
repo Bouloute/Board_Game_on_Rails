@@ -1,7 +1,19 @@
 class BoardGamesController < ApplicationController
     before_action :require_login, only: [:new, :create]
+
     def index 
-        @board_games = BoardGame.all 
+        if params[:query]
+            #CASE SENSITIVE
+            @board_games = BoardGame.where("name == ?", params[:query])
+            
+            if @board_games == []
+                @board_games = BoardGame.all 
+                @board_games.errors.add(:name, "Couldn't find any games with that name")
+            end 
+        else
+            @board_games = BoardGame.all 
+        end
+        
     end
 
     def show 
