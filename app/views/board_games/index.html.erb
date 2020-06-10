@@ -1,5 +1,5 @@
 
-<%= form_for :board_game, url: user_board_games_path(current_user.id), method: 'get' do |f| %>
+<%= form_for :board_game, url: display_form_for_search_bar, method: 'get' do |f| %>
     <%= f.label(:query, "Search name of game:") %>
     <%= f.text_field(:query) %>
     <%= submit_tag("Search") %>
@@ -14,4 +14,4 @@
     <% end %>
 </ul>
 
-<p>Couldn't find the game you're looking for?<%= link_to "Create it!", new_board_game_path %></p>
+<p>Couldn't find the game you're looking for? <%= link_to "Create it!", new_board_game_path %></p>
