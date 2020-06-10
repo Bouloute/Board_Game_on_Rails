@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
     end
 
     def require_login
-        redirect_to controller: 'sessions', action: 'new' unless session.include? :name
+        redirect_to controller: 'sessions', action: 'new' unless session.include? :user_id
     end
 end
