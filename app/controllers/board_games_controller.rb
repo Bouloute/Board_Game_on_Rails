@@ -4,24 +4,36 @@ class BoardGamesController < ApplicationController
     def index 
         
         #binding.pry
-        #nested
+        #if nested
         if params[:user_id]
-            @board_games = User.find_by(id: params[:user_id]).board_games
-           # render :index
-        end
-
-        if params[:board_game] && params[:board_game][:query]
-            #CASE SENSITIVE
-            @board_games = BoardGame.where("name == ?", params[:board_game][:query])
-            
-            if @board_games == []
-                @board_games = BoardGame.all 
-                @board_games.errors.add(:name, "Couldn't find any games with that name")
-            end 
-            render :index
+            user = User.find_by(id: params[:user_id])
+            @board_games = user.board_games
+          
+            #binding.pry
+            if params[:board_game] && params[:board_game][:query]
+                #CASE SENSITIVE
+                #binding.pry
+                @board_games = @board_games.where("name == ?", params[:board_game][:query])
+                
+                if @board_games == []
+                    @board_games = User.find_by(id: params[:user_id]).board_games 
+                    redirect_to user_board_games_path(user), notice: "Couldn't find any games with that name"
+                end 
+            end
         else
-            @board_games = BoardGame.all 
+            if params[:board_game] && params[:board_game][:query]
+                #CASE SENSITIVE
+                @board_games = BoardGame.where("name == ?", params[:board_game][:query])
+                
+                if @board_games == []
+                    @board_games = BoardGame.all 
+                    @board_games.errors.add(:name, "Couldn't find any games with that name")
+                end 
+            else
+                @board_games = BoardGame.all 
+            end
         end
+    
     end
 
     def show 
