@@ -1,9 +1,7 @@
 class BoardGamesController < ApplicationController
     before_action :require_login, only: [:new, :create]
     
-    def index 
-        
-        #binding.pry
+    def index
         #if nested
         if params[:user_id]
             @board_games = User.find_by(id: params[:user_id]).board_games
@@ -11,8 +9,8 @@ class BoardGamesController < ApplicationController
             check_query(@board_games)
         else
             @board_games = check_query(BoardGame.all)
-            if @board_games
-            else
+            #binding.pry
+            if !@board_games
                 @board_games = BoardGame.all 
             end
         end
@@ -49,19 +47,23 @@ class BoardGamesController < ApplicationController
     end
 
     def check_query(board_games_to_check)
-        #binding.pry
+        
         if params[:board_game] && params[:board_game][:query]
-            #CASE SENSITIVE
-            #binding.pry
+            #TODO: CASE SENSITIVE
             @board_games = board_games_to_check.where("name == ?", params[:board_game][:query])
-            
+    
             if @board_games == []
                 user = User.find_by(id: params[:user_id])
-                @board_games = user.board_games 
-                redirect_to user_board_games_path(user), notice: "Couldn't find any games with that name"
+                if user
+                    @board_games = user.board_games 
+                    redirect_to user_board_games_path(user), notice: "Couldn't find any games with that name"
+                else 
+                    redirect_to board_games_path, notice: "Couldn't find any games with that name"
+                end
             end 
+            return @board_games
         else 
-            nil
+            return nil
         end
     end
 end
