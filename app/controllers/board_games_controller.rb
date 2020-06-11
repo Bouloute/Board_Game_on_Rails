@@ -51,8 +51,7 @@ class BoardGamesController < ApplicationController
         
         if params[:board_game] && params[:board_game][:query]
             #TODO: CASE SENSITIVE
-            #model scope method-> where
-            @board_games = board_games_to_check.where("name == ?", params[:board_game][:query])
+            @board_games = board_games_to_check.find_by_name(params[:board_game][:query])
     
             if @board_games == []
                 user = User.find_by(id: params[:user_id])
