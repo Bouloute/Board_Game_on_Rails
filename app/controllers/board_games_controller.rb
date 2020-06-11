@@ -28,7 +28,7 @@ class BoardGamesController < ApplicationController
 
     def create 
         @board_game = BoardGame.create(board_game_params)
-        binding.pry
+        
         if @board_game.valid?
             redirect_to board_games_path
         else 
@@ -51,6 +51,7 @@ class BoardGamesController < ApplicationController
         
         if params[:board_game] && params[:board_game][:query]
             #TODO: CASE SENSITIVE
+            #model scope method-> where
             @board_games = board_games_to_check.where("name == ?", params[:board_game][:query])
     
             if @board_games == []

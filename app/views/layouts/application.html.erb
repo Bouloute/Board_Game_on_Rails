@@ -38,8 +38,8 @@
     </section>
 
     <% flash.each do |type, msg| %>
-      <div>
-        <%= msg %>
+      <div class="field field_with_errors">
+        <h3><%= msg %></h3>
       </div>
     <% end %>
     

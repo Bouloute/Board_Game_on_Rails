@@ -1,3 +1,4 @@
+<div style="margin: 50px;">
 <h1><%= @board_game.name %></h1>
 
 <p>Time duration of the game: <%= @board_game.time_duration %>min</p>
@@ -5,7 +6,7 @@
 <p>Difficulty rating: <%= @board_game.difficulty %>/5</p>
 
 <p>Rules: <%= @board_game.rules %></p>
-
+</div>
 <%= form_for @game do |f| %>
     <%= f.hidden_field :user_id, value: @game.user_id %>
     <%= f.hidden_field :board_game_id, value: @game.board_game_id %>
