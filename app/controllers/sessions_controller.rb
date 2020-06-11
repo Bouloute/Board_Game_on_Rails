@@ -18,6 +18,8 @@ class SessionsController < ApplicationController
             
             if @user.id
                 return render :new unless @user.authenticate(params[:user][:password])
+            else 
+                return render :new
             end
         end
         
@@ -41,8 +43,8 @@ class SessionsController < ApplicationController
             user = User.new
             user.errors.add(:name, "not found")
         else 
-            if user.authenticate(params[:user][:password])
-                user.errors.add(:password, "Incorrect password")
+            if !user.authenticate(params[:user][:password])
+                user.errors.add(:password, "is incorrect")
             end 
         end
         user

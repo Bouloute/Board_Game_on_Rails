@@ -1,4 +1,5 @@
-<div class="form">
+<div class="wrapper">
+  <div class="form">
     <%= form_for @user, url: '/login' do |f| %>
       
       <% if @user.errors.any? %>
@@ -13,7 +14,7 @@
       <% end %>
 
 
-      <div class="field<%= 'field_with_errors' if @user.errors[:name].any? %>">
+      <div class="field <%= 'field_with_errors' if @user.errors[:name].any? %>">
         <%= f.label :name %><br>
         <%= f.text_field :name %><br>
       </div>
@@ -29,4 +30,5 @@
       <p class="message">Log in with <%= link_to "Github", "/auth/github" %></p>
     <% end %>
     
+  </div>
 </div>

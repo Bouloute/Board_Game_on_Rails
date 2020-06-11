@@ -5,11 +5,11 @@ class BoardGamesController < ApplicationController
         #if nested
         if params[:user_id]
             @board_games = User.find_by(id: params[:user_id]).board_games
-          
+
             check_query(@board_games)
         else
             @board_games = check_query(BoardGame.all)
-            #binding.pry
+
             if !@board_games
                 @board_games = BoardGame.all 
             end
@@ -28,6 +28,7 @@ class BoardGamesController < ApplicationController
 
     def create 
         @board_game = BoardGame.create(board_game_params)
+        binding.pry
         if @board_game.valid?
             redirect_to board_games_path
         else 
