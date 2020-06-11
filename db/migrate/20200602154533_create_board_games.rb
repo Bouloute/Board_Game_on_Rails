@@ -5,7 +5,6 @@ class CreateBoardGames < ActiveRecord::Migration[6.0]
       t.integer :time_duration
       t.integer :difficulty 
       t.string :rules
-      t.string :category
     end
   end
 end

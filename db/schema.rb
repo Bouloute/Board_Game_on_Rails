@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2020_06_02_154546) do
     t.integer "time_duration"
     t.integer "difficulty"
     t.string "rules"
-    t.string "category"
   end
 
   create_table "games", force: :cascade do |t|
     t.integer "user_id"
     t.integer "board_game_id"
+    t.string "comment"
   end
 
   create_table "users", force: :cascade do |t|
