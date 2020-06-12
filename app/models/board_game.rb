@@ -8,7 +8,6 @@ class BoardGame < ApplicationRecord
     has_many :games
     has_many :users, through: :games
 
-    def self.find_by_name(name)
-        self.where("name == ?", name)
-    end
+    scope :name_is, ->(name) { where("name == ?", name) }
+    
 end

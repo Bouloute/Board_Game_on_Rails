@@ -3,7 +3,7 @@ module ApplicationHelper
     def display_user_or_home_page
         #binding.pry 
         if current_user
-            link_to current_user.name, user_board_games_path(current_user)
+            link_to current_user.name, user_games_path(current_user)
         else 
             link_to "Home", "/"
         end

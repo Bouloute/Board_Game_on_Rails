@@ -1,0 +1,19 @@
+
+<%= form_for :game, url: url_for_form_for_search_bar, method: 'get',  html: {class: "searchform cf"} do |f| %>
+
+    <%= f.text_field :query, placeholder: "Search name of game:"%>
+    <%= submit_tag("Search") %>
+<% end %>
+<br>
+
+<h3><%= display_user_name_if_not_current %></h3><br>
+
+<ol class="gradient-list">
+    <% @games.each do |game| %>
+        <li><%= link_to game.board_game.name, board_game_path(game.board_game.id) %>
+        <p><%= game.comment %></p>
+        </li>
+    <% end %>
+</ol>
+
+<p>Couldn't find the game you're looking for? <%= link_to "Create it!", new_board_game_path %></p>

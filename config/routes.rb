@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :games, only: [:create]
 
   resources :users do
-    resources :board_games
+    resources :games, only: [:index]
   end
 
   get '/signup', to: 'users#new'

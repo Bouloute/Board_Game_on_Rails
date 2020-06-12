@@ -5,7 +5,6 @@ class BoardGamesController < ApplicationController
         #if nested
         if params[:user_id]
             @board_games = User.find_by(id: params[:user_id]).board_games
-
             check_query(@board_games)
         else
             @board_games = check_query(BoardGame.all)
@@ -51,7 +50,7 @@ class BoardGamesController < ApplicationController
         
         if params[:board_game] && params[:board_game][:query]
             #TODO: CASE SENSITIVE
-            @board_games = board_games_to_check.find_by_name(params[:board_game][:query])
+            @board_games = board_games_to_check.name_is(params[:board_game][:query])
     
             if @board_games == []
                 user = User.find_by(id: params[:user_id])
