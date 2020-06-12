@@ -12,13 +12,21 @@ class GamesController < ApplicationController
     
     end
 
-    def create 
-        Game.create(user_id: params[:game][:user_id], board_game_id: params[:game][:board_game_id])
+    def create
+        Game.create(game_params)
         
-        redirect_to user_path(current_user)
+        redirect_to user_games_path(current_user)
     end
 
     private
+ 
+    def game_params
+        params.require(:game).permit(
+        :user_id,
+        :board_game_id,
+        :comment
+        )
+    end
 
     def check_query(games_to_check)
         

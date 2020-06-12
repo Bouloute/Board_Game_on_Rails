@@ -23,9 +23,9 @@ class SessionsController < ApplicationController
             end
         end
         
-        if @user.valid? 
-            render :new 
-        end
+        #if @user.valid? 
+        #    render :new 
+        #end
         session[:user_id] = @user.id
         redirect_to board_games_path
     end
