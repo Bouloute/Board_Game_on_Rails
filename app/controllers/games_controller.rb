@@ -5,7 +5,7 @@ class GamesController < ApplicationController
         #if nested
         if params[:user_id]
             @games = User.find_by(id: params[:user_id]).games
-            check_query(@games)
+            @games = check_query(@games)
         else
             redirect_to board_games_path, notice: "Something went wrong!"
         end
@@ -32,20 +32,21 @@ class GamesController < ApplicationController
         
         if params[:game] && params[:game][:query]
             #TODO: CASE SENSITIVE
-            @games = games_to_check.select { |game| game.board_game.name == params[:game][:query] }
+            games = games_to_check.select { |game| game.board_game.name == params[:game][:query] }
     
-            if @games == []
+            #if found nothing
+            if games == []
                 user = User.find_by(id: params[:user_id])
                 if user
-                    @games = user.games 
+                    games = user.games 
                     redirect_to user_games_path(user), notice: "Couldn't find any games with that name"
                 else 
                     redirect_to board_games_path, notice: "Couldn't find the user"
                 end
             end 
-            return @games
+            return games
         else 
-            return nil
+            return games_to_check
         end
     end
 end

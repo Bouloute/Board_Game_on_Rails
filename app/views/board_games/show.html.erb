@@ -7,9 +7,15 @@
 
 <p>Rules: <%= @board_game.rules %></p>
 </div>
-<%= form_for @game do |f| %>
-    <%= f.hidden_field :user_id, value: @game.user_id %>
-    <%= f.hidden_field :board_game_id, value: @game.board_game_id %>
-    <%= f.text_area :comment %>
-    <%= submit_tag "Play this game"%>
-<% end %>
+
+<div class="wrapper">
+    <div class="form">
+        <%= form_for @game do |f| %>
+            <%= f.hidden_field :user_id, value: @game.user_id %>
+            <%= f.hidden_field :board_game_id, value: @game.board_game_id %>
+            <%= f.label :comment, "Write a comment about your experience" %><br>
+            <%= f.text_area :comment %>
+            <%= submit_tag "Play this game"%>
+        <% end %>
+    </div>
+</div>

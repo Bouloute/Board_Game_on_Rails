@@ -1,7 +1,1 @@
 <h1><%= @user.name %></h1>
-<p>Here are the games <%= @user.name %> has played</p>
-<ol class="gradient-list">
-    <% @user.board_games.each do |g| %>
-        <li><%= link_to g.name, board_game_path(g) %>
-    <% end %>
-</ol>
